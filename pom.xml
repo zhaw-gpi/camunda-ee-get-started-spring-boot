@@ -38,6 +38,12 @@
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.3</version>
     </dependency>
+     <!-- Import die JDBC-Unterst�tzung f�r Spring Boot, damit H2 auch 
+        file-basiert sein kann -->  
+        <dependency> 
+          <groupId>org.springframework.boot</groupId>  
+          <artifactId>spring-boot-starter-jdbc</artifactId> 
+        </dependency>  
   </dependencies>
   
    <build>
