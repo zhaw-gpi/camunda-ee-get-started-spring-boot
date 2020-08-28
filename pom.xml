@@ -2,48 +2,41 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ch.zhaw.gpi.camunda</groupId>
   <artifactId>getting-started</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.5.RELEASE</version>
+    <relativePath/>
+  </parent>
 
   <properties>
-    <camunda.spring-boot.version>3.3.1</camunda.spring-boot.version>
-    <spring-boot.version>2.1.7.RELEASE</spring-boot.version>
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+    <java.version>11</java.version>
   </properties>
-  
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
   
   <dependencies>
     <dependency>
       <groupId>org.camunda.bpm.springboot</groupId>
-      <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
-      <version>${camunda.spring-boot.version}</version>
+      <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+      <version>7.13.0</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.camunda.bpm.springboot</groupId>
+      <artifactId>camunda-bpm-spring-boot-starter-webapp-ee</artifactId>
+      <version>7.13.0-ee</version>
+    </dependency>
+
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
     </dependency>
+
     <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>2.2.3</version>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jdbc</artifactId>
     </dependency>
-     <!-- Import die JDBC-Unterst�tzung f�r Spring Boot, damit H2 auch 
-        file-basiert sein kann -->  
-        <dependency> 
-          <groupId>org.springframework.boot</groupId>  
-          <artifactId>spring-boot-starter-jdbc</artifactId> 
-        </dependency>  
   </dependencies>
   
    <build>
@@ -51,26 +44,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <configuration>
-          <layout>ZIP</layout>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin> 
-
-      <!-- Ohne die folgende Angaben versucht Maven mit JDK 5 zu kompilieren -->  
-      <plugin> 
-        <artifactId>maven-compiler-plugin</artifactId>  
-        <version>2.3.1</version>  
-        <configuration> 
-          <source>11</source>  
-          <target>11</target> 
-        </configuration> 
       </plugin> 
     </plugins>
   </build>
@@ -86,5 +59,5 @@
       <name>camunda-bpm-ee</name>  
       <url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</url> 
     </repository> 
-  </repositories> 
+  </repositories>
 </project>
